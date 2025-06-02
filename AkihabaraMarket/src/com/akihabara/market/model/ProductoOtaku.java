@@ -2,6 +2,7 @@ package com.akihabara.market.model;
 
 public class ProductoOtaku {
 //Atributos de los produtos:
+	private int id;
 	private String nombre;
 	private String categoria;
 	private double precio;
@@ -11,13 +12,21 @@ public class ProductoOtaku {
 	}
 	
 	//Constructor completo con parametros
-	public ProductoOtaku(String nombre, String categoria, double precio, int stock){
+	public ProductoOtaku(int id, String nombre, String categoria, double precio, int stock){
+		this.id = id;
 		this.nombre = nombre;
 		this.categoria = categoria;
 		this.precio = precio;
 		this.stock = stock;
 	}
+	public int getId() {
+		return this.stock;
+	}
 	
+	public String setId(int id) {
+		this.id = id;
+		return "Id cambiado con exito.";
+	}
 	//Getters y setters de todos los campos del producto:
 	public String getNombre() {
 		return this.nombre;
@@ -56,7 +65,7 @@ public class ProductoOtaku {
 	}
 	//Metodo to String para mostrar el objeto con un formato claro:
 	public String toString() {
-		return "Nombre del producto: " + this.nombre + "\nCategoria: " + this.categoria + "\nPrecio: " + this.precio + "\nStock: " + this.stock;
+		return "Id: " + this.id + "\nNombre del producto: " + this.nombre + "\nCategoria: " + this.categoria + "\nPrecio: " + this.precio + "\nStock: " + this.stock;
 	}
 }
 
