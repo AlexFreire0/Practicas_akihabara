@@ -65,7 +65,7 @@ public class ProductoOtaku {
 	}
 	//Metodo to String para mostrar el objeto con un formato claro:
 	public String toString() {
-		return "Id: " + this.id + "\nNombre del producto: " + this.nombre + "\nCategoria: " + this.categoria + "\nPrecio: " + this.precio + "\nStock: " + this.stock;
+		return "Id: " + this.id + "\nNombre del producto: " + this.nombre + "\nCategoria: " + this.categoria + "\nPrecio: " + this.precio + "\nStock: " + this.stock + "\n------------------------------------------";
 	}
 }
 
