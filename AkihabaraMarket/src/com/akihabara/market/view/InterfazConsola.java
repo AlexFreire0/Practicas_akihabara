@@ -3,7 +3,7 @@ package com.akihabara.market.view;
 import com.akihabara.market.model.ProductoOtaku;
 import java.util.List;
 import java.util.Scanner;
-
+import com.akihabara.market.llm.LlmService;
 public class InterfazConsola {
 
     private Scanner scanner = new Scanner(System.in);
@@ -40,8 +40,26 @@ public class InterfazConsola {
 
     // Leer los datos de un nuevo producto
     public ProductoOtaku pedirDatosProducto() {
-        System.out.print("Ingrese el nombre del producto: ");
-        String nombre = scanner.nextLine();
+        LlmService llmService = new LlmService();
+        System.out.print("Ingrese el tipo de producto (ej. figura, camiseta): ");
+        String tipo = scanner.nextLine();
+
+        System.out.print("Ingrese la franquicia (ej. Naruto, One Piece): ");
+        String franquicia = scanner.nextLine();
+
+        String nombreSugerido = llmService.sugerirNombreProducto(tipo, franquicia);
+        System.out.println("Nombre sugerido por la IA: " + nombreSugerido);
+
+        System.out.print("¿Desea usar este nombre sugerido? (s/n): ");
+        String eleccion = scanner.nextLine();
+
+        String nombre;
+        if (eleccion.equalsIgnoreCase("s")) {
+            nombre = nombreSugerido;
+        } else {
+            System.out.print("Ingrese el nombre del producto: ");
+            nombre = scanner.nextLine();
+        }
 
         System.out.print("Ingrese la categoría del producto: ");
         String categoria = scanner.nextLine();
@@ -58,7 +76,6 @@ public class InterfazConsola {
                 System.out.println("Entrada no válida. El precio debe ser un número.");
             }
         }
-
         int stock = -1;
         while (stock < 0) {
             try {
